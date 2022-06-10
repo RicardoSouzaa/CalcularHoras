@@ -6,7 +6,11 @@ namespace CalcularHoras
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Vamos calcular o tempo decorrido\n\n");
+            Console.WriteLine("Vamos calcular intervalos de tempo???\n\n");
+
+            Console.WriteLine("O que deseja fazer?\n\n 1) SOMAR tempos \n 2) SUBITRAIR tempos");
+
+            int escolha = int.Parse(Console.ReadLine());
 
             Hora hInicial = new Hora();
             hInicial.PedirHora("INICIAL", "INICIAIS");
@@ -15,8 +19,21 @@ namespace CalcularHoras
             Hora hFim = new Hora();
             hFim.PedirHora("FINAL", "FINAIS");
             TimeSpan fim = hFim.horas;
+            TimeSpan intervalo = new TimeSpan();
 
-            TimeSpan intervalo = fim - inicio;
+            switch (escolha)
+            {
+                case 1:
+                    intervalo = fim + inicio;
+                    break;
+
+                case 2:
+                    intervalo = fim - inicio;
+                    break;
+
+                default:
+                    break;
+            }
 
             Console.WriteLine($"\n\n\nO intervalo de tempo ...: {intervalo.ToString()}");
 
